@@ -1,0 +1,184 @@
+root@ubuntu:/home/lg/upnp# ls cms_cp*
+cms_cp.c  cms_cp.h
+root@ubuntu:/home/lg/upnp# gcc -I/usr/local/include -I/usr/local/include/upnp -L/usr/local/lib cms_cp.c -o cms_cp -g -lupnp -lthreadutil -lixml -lpthread
+root@ubuntu:/home/lg/upnp# ./cms_cp 
+CtrlPointStart with paddress={NULL} port=0
+UPnP CP Initialized ipaddress=192.168.1.4 port=49152
+Config Control Point Registered
+
+>help
+Commands:
+  Help
+  Refresh
+  List          [<devnum>]
+  GetVar        <devnum> <varname>
+  GetValues     <devnum> <nodePath>
+  SetAlarmsEnabled       <devnum> <0|1>
+  SetValues     <devnum> <nodePath> <nodeValue>
+  Exit
+
+Detail:
+  Help
+       Print this help info.
+  Refresh
+       Delete all of the devices from the ManageableDevice list and issue new
+         search request to rebuild the list from scratch.
+  List  [<devnum>]
+       Print the state table for the ManageableDevice <devnum>.
+       IF no <devnum>,print the current list of ManageableDevice Emulators that this
+         control point is aware of. 
+         e.g., List 1' prints the state table for the first device in the ManageableDevice list.
+  GetVar <devnum> <varname>
+       Requests the value of a variable specified by the string <varname>
+         from the Control Service of device <devnum>.
+         (e.g., " GetVar  1  ConfigurationUpdate ")
+  GetValues <devnum> <nodepath> 
+       Sends an action request specified by the string <GetValues>
+         to the Control Service of device <devnum>.
+         (e.g., " GetValues  1  /BBF/VoiceService/0/SIP/Network/0/ProxyServer ")
+  SetAlarmsEnabled <devnum> <0|1>
+       1:will force the Parent Device from including the pair name-value for 'alarmed' parameters,if any in the ConfigurationUpdate state;
+       0:will prevent the Parent Device to include the pair name-value for 'alarmed' parameters,when they change their value.
+         (e.g., " SetAlarmsEnabled  1  1 ")
+  SetValues <devnum> <nodepath> <nodevalue>
+       Sends an action request specified by the string <SetValues>
+         to the Control Service of device <devnum>.
+         (e.g., " SetValues  1 /BBF/VoiceService/0/SIP/Network/0/ProxyServer 192.168.9.130 ")
+  Exit
+       Exits the control point application.
+
+>
+Command not implemented; see 'Help'
+
+>Received ByeBye for Device: uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200
+Received ByeBye for Device: uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200
+Received ByeBye for Device: uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200
+Received ByeBye for Device: uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200
+Received ByeBye for Device: uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200
+Received ByeBye for Device: uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200
+Received ByeBye for Device: uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200
+Received ByeBye for Device: uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200
+Received ByeBye for Device: uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200
+Received ByeBye for Device: uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200
+Received ByeBye for Device: uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200
+Received ByeBye for Device: uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200
+Found service: urn:schemas-upnp-org:service:ConfigurationManagement:2
+serviceId: urn:upnp-org:serviceId:ConfigurationManagement
+Subscribing to eventURL http://192.168.1.202:50174/ConfigurationManagement...
+Subscribed to eventURL with SID=uuid:67c7e942-eec3-11e6-bce9-a2518c1414a9
+NotifyState (null)=(null),UDN=uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200,type=1
+Received ConfigurationManagement Event: 0 for SID uuid:67c7e942-eec3-11e6-bce9-a2518c1414a9
+StateUpdate (service 0):
+ ConfigurationUpdate='0,2015-07-27T19:22:13'
+ SupportedDataModelsUpdate='0,2015-07-27T19:22:13'
+ SupportedParametersUpdate='0,2015-07-27T19:22:13'
+ AttributeValuesUpdate='0,2015-07-27T19:22:13'
+ InconsistentStatus='0'
+ AlarmsEnabled='0'
+
+Command not implemented; see 'Help'
+
+>list
+CtrlPointPrintList:
+   1 -- uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200,B2BUA (intelce)
+
+
+>list 1
+PrintDevice:
+  Device -- 1
+    |                  
+    +- UDN        = uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200
+    +- descDocURL     = http://192.168.1.202:50174/ManageableDevice.xml
+    +- friendlyName   = B2BUA (intelce)
+    +- presURL        = http://192.168.1.202:50174/ManageableDevice.xml
+    +- Adver. TimeOut = 1800
+    |                  
+    +-  ConfigurationManagement service
+         +- serviceId       = urn:upnp-org:serviceId:ConfigurationManagement
+         +- serviceType     = urn:schemas-upnp-org:service:ConfigurationManagement:2
+         +- eventURL        = http://192.168.1.202:50174/ConfigurationManagement
+         +- controlURL      = http://192.168.1.202:50174/ConfigurationManagement
+         +- SID             = uuid:67c7e942-eec3-11e6-bce9-a2518c1414a9
+         +- ServiceStateTable
+              +- ConfigurationUpdate = 0,2015-07-27T19:22:13
+              +- SupportedDataModelsUpdate = 0,2015-07-27T19:22:13
+              +- SupportedParametersUpdate = 0,2015-07-27T19:22:13
+              +- AttributeValuesUpdate = 0,2015-07-27T19:22:13
+              +- InconsistentStatus = 0
+              +- AlarmsEnabled = 0
+
+
+>SetAlarmsEnabled  1  1
+
+>ErrCode = UPNP_E_SUCCESS(0)
+Received ConfigurationManagement Event: 1 for SID uuid:67c7e942-eec3-11e6-bce9-a2518c1414a9
+StateUpdate (service 0):
+ AlarmsEnabled='1'
+
+Command not implemented; see 'Help'
+
+>SetValues  1 /BBF/VoiceService/0/SIP/Network/0/ProxyServer 192.168.9.133
+
+>Received ConfigurationManagement Event: 2 for SID uuid:67c7e942-eec3-11e6-bce9-a2518c1414a9
+StateUpdate (service 0):
+ ConfigurationUpdate='1,2015-07-27T19:22:54'
+ErrCode = UPNP_E_SUCCESS(0)
+
+Command not implemented; see 'Help'
+
+>GetValues  1  /BBF/VoiceService/0/SIP/Network/0/ProxyServer
+
+>ErrCode = UPNP_E_SUCCESS(0)
+
+/BBF/VoiceService/0/SIP/Network/0/ProxyServer=192.168.9.133
+
+Command not implemented; see 'Help'
+
+>GetVar  1  ConfigurationUpdate 
+
+>NotifyState ConfigurationUpdate=1,2015-07-27T19:22:54,UDN=uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200,type=3
+
+Command not implemented; see 'Help'
+
+>Received ConfigurationManagement Event: 3 for SID uuid:67c7e942-eec3-11e6-bce9-a2518c1414a9
+StateUpdate (service 0):
+ ConfigurationUpdate='2,2015-07-27T19:23:29,<?xml version="1.0" encoding="UTF-8"?><cms:ParameterValueList xmlns:cms="urn:schemas-upnp-org:dm:cms" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:schemas-upnp-org:dm:cms http://www.upnp.org/schemas/dm/cms.xsd"><Parameter><ParameterPath>/BBF/VoiceService/0/SIP/Network/0/Status</ParameterPath><Value>Up</Value></Parameter></cms:ParameterValueList>'
+
+/BBF/VoiceService/0/SIP/Network/0/Status=Up
+
+Command not implemented; see 'Help'
+
+>list 1
+PrintDevice:
+  Device -- 1
+    |                  
+    +- UDN        = uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200
+    +- descDocURL     = http://192.168.1.202:50174/ManageableDevice.xml
+    +- friendlyName   = B2BUA (intelce)
+    +- presURL        = http://192.168.1.202:50174/ManageableDevice.xml
+    +- Adver. TimeOut = 1710
+    |                  
+    +-  ConfigurationManagement service
+         +- serviceId       = urn:upnp-org:serviceId:ConfigurationManagement
+         +- serviceType     = urn:schemas-upnp-org:service:ConfigurationManagement:2
+         +- eventURL        = http://192.168.1.202:50174/ConfigurationManagement
+         +- controlURL      = http://192.168.1.202:50174/ConfigurationManagement
+         +- SID             = uuid:67c7e942-eec3-11e6-bce9-a2518c1414a9
+         +- ServiceStateTable
+              +- ConfigurationUpdate = 2,2015-07-27T19:23:29,<?xml version="1.0" encoding="UTF-8"?><cms:ParameterValueList xmlns:cms="urn:schemas-upnp-org:dm:cms" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:schemas-upnp-org:dm:cms http://www.upnp.org/schemas/dm/cms.xsd"><Parameter><ParameterPath>/BBF/VoiceService/0/SIP/Network/0/Status</ParameterPath><Value>Up</Value></Parameter></cms:ParameterValueList>
+              +- SupportedDataModelsUpdate = 0,2015-07-27T19:22:13
+              +- SupportedParametersUpdate = 0,2015-07-27T19:22:13
+              +- AttributeValuesUpdate = 0,2015-07-27T19:22:13
+              +- InconsistentStatus = 0
+              +- AlarmsEnabled = 1
+
+
+> 
+Command not implemented; see 'Help'
+
+>
+Command not implemented; see 'Help'
+
+>exit
+Error unsubscribing to ConfigurationManagement eventURL -- -204
+NotifyState (null)=(null),UDN=uuid:03cc5f92-1dd2-11b2-abfd-C0A000046200,type=2

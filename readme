@@ -1,0 +1,23 @@
+
+UPnP control point sample for CMS(ConfigurationManagement Service)
+	-- by larkguo@gmail.com
+
+1.Architecture:
+  cms_cp ==command==> libupnp   (CtrlPointProcessCommand)
+  cms_cp <==notify==  libupnp	(CtrlPointCallbackEventHandler	)
+
+2.Requires:
+  libupnp-1.6.21
+
+3.Compile:(assumed that libupnp are installed in /usr/local)
+	gcc -I/usr/local/include -I/usr/local/include/upnp -L/usr/local/lib cms_cp.c \
+	-o cms_cp -g -lupnp -lthreadutil -lixml -lpthread
+
+4.Run:
+	export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+	./cms_cp 
+
+5.Valgrind
+	valgrind --error-limit=no --tool=memcheck  --leak-check=full  ./cms_cp
+	valgrind --error-limit=no --tool=helgrind  ./cms_cp
+
